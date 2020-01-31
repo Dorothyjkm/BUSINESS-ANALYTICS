@@ -1,0 +1,12 @@
+SELECT CD.season AS Season,
+ AB.attendance AS Attendance,
+ AB.venue_capacity AS Venue_Capacity,
+ AB.venue_name AS Venue,
+ AB.venue_country AS Country,
+ CD.name AS TeamA,
+ CD.opp_name AS TeamB,
+FROM `bigquery-public-data.ncaa_basketball.mbb_games_sr` AS AB
+JOIN `bigquery-public-data.ncaa_basketball.mbb_teams_games_sr` AS CD
+ON (AB.game_id = CD.game_id)
+ORDER BY attendance DESC
+LIMIT 1;
